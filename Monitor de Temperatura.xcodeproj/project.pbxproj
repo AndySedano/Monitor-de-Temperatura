@@ -145,6 +145,11 @@
 					E12D98BD1C6BDA5E0010D874 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = QH267RVK5T;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -354,10 +359,12 @@
 			baseConfigurationReference = 915A8CA4329F4637CDAA6EDF /* Pods-Monitor de Temperatura.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Monitor de Temperatura/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "andye.Monitor-de-Temperatura";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -366,10 +373,12 @@
 			baseConfigurationReference = 6ADAF0BD03A0D8AC7EF2A547 /* Pods-Monitor de Temperatura.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Monitor de Temperatura/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "andye.Monitor-de-Temperatura";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -383,7 +392,7 @@
 				E12D98CF1C6BDA5E0010D874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E12D98D01C6BDA5E0010D874 /* Build configuration list for PBXNativeTarget "Monitor de Temperatura" */ = {
 			isa = XCConfigurationList;
@@ -392,7 +401,7 @@
 				E12D98D21C6BDA5E0010D874 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,6 @@
+framework module Pods_Monitor_de_Temperatura {
+  umbrella header "Pods-Monitor de Temperatura-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,7 +9,7 @@
 import UIKit
 
 class AjustesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var tableSensores: UITableView!
     @IBOutlet weak var seleccionTiempo: UIPickerView!
     var tiempos:[String] = [String]()
@@ -26,12 +26,12 @@ class AjustesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         self.seleccionTiempo.dataSource = self
         self.tableSensores.delegate = self
         self.tableSensores.dataSource = self
-
-        tiempos = ["5 minutos", "15 minutos", "30 minutos", "1 hora", "5 horas", "12 horas", "24 horas", "48 horas"]
+        
+        tiempos = ["5 minutos", "15 minutos", "30 minutos", "1 hora", "5 horas", "12 horas", "24 horas"]
         
         seleccionTiempo.selectRow(0, inComponent: 0, animated: false)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -71,18 +71,22 @@ class AjustesVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         return cell
     }
     
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            DataManager.sharedInstance.sensores.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            DataManager.sharedInstance.saveUserData()
+        }
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

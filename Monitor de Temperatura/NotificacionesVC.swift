@@ -9,17 +9,30 @@
 import UIKit
 
 class NotificacionesVC: UIViewController {
-
+    
     @IBOutlet weak var tiempo: UITextField!
     @IBOutlet weak var maxTemp: UITextField!
     @IBOutlet weak var minTemp: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        DataManager.sharedInstance.loadUserData()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        DataManager.sharedInstance.loadUserData()
+        tiempo.text = String(DataManager.sharedInstance.tiempoAlert)
+        maxTemp.text = String(DataManager.sharedInstance.maxAlert)
+        minTemp.text = String(DataManager.sharedInstance.minAlert)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        DataManager.sharedInstance.tiempoAlert = Double(tiempo.text!)!
+        DataManager.sharedInstance.maxAlert = Double(maxTemp.text!)!
+        DataManager.sharedInstance.minAlert = Double(minTemp.text!)!
+        DataManager.sharedInstance.saveUserData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,15 +43,22 @@ class NotificacionesVC: UIViewController {
         maxTemp.resignFirstResponder()
         minTemp.resignFirstResponder()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func guardar(sender: AnyObject) {
+        DataManager.sharedInstance.tiempoAlert = Double(tiempo.text!)!
+        DataManager.sharedInstance.maxAlert = Double(maxTemp.text!)!
+        DataManager.sharedInstance.minAlert = Double(minTemp.text!)!
+        DataManager.sharedInstance.saveUserData()
+        QuitarTeclado(self)
     }
-    */
-
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
